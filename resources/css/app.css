@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .text-primary {
+        @apply text-gray-800;
+    }
+
+    .text-secondary {
+        @apply text-gray-500;
+    }
+
+    .text-accent {
+        @apply text-emerald-600;
+    }
+
+    .bg-gradient-custom {
+        @apply bg-gradient-to-br from-emerald-50 to-teal-50;
+    }
+
+    .bg-card {
+        @apply bg-white;
+    }
+
+    .btn-primary {
+        @apply bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:opacity-90 transition-all hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2;
+    }
+
+    .input-field {
+        @apply w-full px-5 py-4 text-gray-700 bg-gray-50/50 rounded-xl outline-none transition-all border border-gray-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200;
+    }
+}
