@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 //Landing Page Routes
@@ -32,6 +33,4 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
-Route::get('/admin/products', function () {
-    return view('admin.product');
-})->name('admin.products');
+Route::get('/admin/products', [ProductController::class, "index"])->name('admin.products');

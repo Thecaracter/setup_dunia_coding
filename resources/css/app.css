@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @layer components {
+
+    /* Original styles */
     .text-primary {
         @apply text-gray-800;
     }
@@ -29,5 +31,102 @@
 
     .input-field {
         @apply w-full px-5 py-4 text-gray-700 bg-gray-50/50 rounded-xl outline-none transition-all border border-gray-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200;
+    }
+
+    /* Additional components for our admin panel */
+    .btn-secondary {
+        @apply px-4 py-2 text-emerald-600 bg-emerald-50 hover:bg-emerald-100 transition-all rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-200;
+    }
+
+    .btn-danger {
+        @apply px-4 py-2 text-red-600 bg-red-50 hover:bg-red-100 transition-all rounded-xl focus:outline-none focus:ring-2 focus:ring-red-200;
+    }
+
+    .table-cell {
+        @apply px-6 py-4 whitespace-nowrap text-sm text-gray-700;
+    }
+
+    .badge {
+        @apply px-2.5 py-0.5 text-xs font-medium rounded-full;
+    }
+
+    .badge-success {
+        @apply bg-emerald-100 text-emerald-700;
+    }
+
+    .badge-danger {
+        @apply bg-red-100 text-red-700;
+    }
+
+    .modal-backdrop {
+        @apply fixed inset-0 bg-gray-500/75 backdrop-blur-sm transition-opacity;
+    }
+
+    .modal-panel {
+        @apply relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all sm:my-8;
+    }
+
+    .form-label {
+        @apply block mb-2 text-sm font-medium text-primary;
+    }
+
+    .form-input {
+        @apply input-field;
+    }
+
+    .form-select {
+        @apply input-field appearance-none bg-no-repeat pr-10;
+    }
+
+    .card {
+        @apply bg-card rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow;
+    }
+
+    .card-header {
+        @apply px-6 py-4 border-b border-gray-100;
+    }
+
+    .card-body {
+        @apply p-6;
+    }
+
+    .card-footer {
+        @apply px-6 py-4 border-t border-gray-100;
+    }
+
+    .icon-button {
+        @apply p-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2;
+    }
+
+    .icon-button-primary {
+        @apply icon-button text-emerald-600 hover:bg-emerald-50 focus:ring-emerald-400;
+    }
+
+    .icon-button-danger {
+        @apply icon-button text-red-600 hover:bg-red-50 focus:ring-red-400;
+    }
+
+    .search-input {
+        @apply input-field pl-12;
+    }
+
+    .dropdown-content {
+        @apply absolute right-0 mt-2 w-48 rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none;
+    }
+
+    .table-responsive {
+        @apply min-w-full divide-y divide-gray-200 overflow-x-auto;
+    }
+
+    .pagination-item {
+        @apply relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg focus:z-10 focus:outline-none;
+    }
+
+    .pagination-active {
+        @apply z-10 bg-emerald-50 text-emerald-600 hover:bg-emerald-100;
+    }
+
+    .pagination-disabled {
+        @apply opacity-50 cursor-not-allowed;
     }
 }

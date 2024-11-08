@@ -1,76 +1,197 @@
-<aside class="w-64 h-screen bg-white shadow-lg fixed left-0">
-    <div class="h-full flex flex-col">
+<aside class="sidebar shadow h-100 position-fixed" id="sidebar"
+    style="width: 16rem; background: #ffffff; z-index: 1040;">
+    <div class="d-flex flex-column h-100">
         <!-- Logo -->
-        <div class="px-6 py-8 border-b border-gray-100">
-            <h2 class="text-2xl font-bold text-primary">Store Admin</h2>
+        <div class="px-4 py-4 border-bottom">
+            <div class="d-flex align-items-center gap-2">
+                <div class="rounded-circle d-flex align-items-center justify-content-center"
+                    style="width: 40px; height: 40px; background: linear-gradient(45deg, #198754, #146c43);">
+                    <i class="bi bi-shop-window text-white fs-5"></i>
+                </div>
+                <div class="sidebar-text">
+                    <h2 class="fs-5 fw-bold mb-0 text-success">Store Admin</h2>
+                    <small class="text-muted">Management Panel</small>
+                </div>
+            </div>
         </div>
 
         <!-- Navigation -->
-        <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
-            <a href="{{ route('admin.dashboard') }}"
-                class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-emerald-50 text-accent' : 'text-secondary hover:bg-emerald-50 hover:text-accent' }} transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                </svg>
-                <span>Dashboard</span>
-            </a>
-
-            <div class="space-y-1">
-                <p class="px-4 pt-6 pb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                    Catalog
-                </p>
-
-                <a href="{{ route('admin.products') }}"
-                    class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.products') ? 'bg-emerald-50 text-accent' : 'text-secondary hover:bg-emerald-50 hover:text-accent' }} transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
-                        <path fill-rule="evenodd"
-                            d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <span>Products</span>
+        <nav class="flex-grow-1 px-3 py-4 overflow-auto">
+            <div class="nav flex-column gap-1">
+                <a href="{{ route('admin.dashboard') }}"
+                    class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded-2 {{ request()->routeIs('admin.dashboard') ? 'active-nav' : 'text-secondary hover-nav' }}">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                    <span class="sidebar-text">Dashboard</span>
                 </a>
 
-                <a href=""
-                    class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.categories.*') ? 'bg-emerald-50 text-accent' : 'text-secondary hover:bg-emerald-50 hover:text-accent' }} transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                            d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-                    </svg>
-                    <span>Categories</span>
-                </a>
-            </div>
+                <div class="mt-4">
+                    <p class="px-3 text-uppercase small fw-medium mb-2 text-secondary sidebar-text">Catalog Management
+                    </p>
 
-            <div class="space-y-1">
-                <p class="px-4 pt-6 pb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                    Sales
-                </p>
+                    <a href=""
+                        class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded-2 {{ request()->routeIs('admin.categories.*') ? 'active-nav' : 'text-secondary hover-nav' }}">
+                        <i class="bi bi-collection-fill"></i>
+                        <span class="sidebar-text">Categories</span>
+                    </a>
 
-                <a href=""
-                    class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.orders.*') ? 'bg-emerald-50 text-accent' : 'text-secondary hover:bg-emerald-50 hover:text-accent' }} transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                            d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" />
-                    </svg>
-                    <span>Orders</span>
-                </a>
-            </div>
+                    <a href="{{ route('admin.products') }}"
+                        class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded-2 {{ request()->routeIs('admin.products') ? 'active-nav' : 'text-secondary hover-nav' }}">
+                        <i class="bi bi-box-seam-fill"></i>
+                        <span class="sidebar-text">Products</span>
+                    </a>
+                </div>
 
-            <div class="space-y-1">
-                <p class="px-4 pt-6 pb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                    Users
-                </p>
+                <div class="mt-4">
+                    <p class="px-3 text-uppercase small fw-medium mb-2 text-secondary sidebar-text">Sales & Orders</p>
 
-                <a href=""
-                    class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ request()->routeIs('admin.users.*') ? 'bg-emerald-50 text-accent' : 'text-secondary hover:bg-emerald-50 hover:text-accent' }} transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                            d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                    </svg>
-                    <span>Users</span>
-                </a>
+                    <a href=""
+                        class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded-2 {{ request()->routeIs('admin.orders.*') ? 'active-nav' : 'text-secondary hover-nav' }}">
+                        <i class="bi bi-cart-check-fill"></i>
+                        <span class="sidebar-text">Orders</span>
+                    </a>
+                </div>
+
+                <div class="mt-4">
+                    <p class="px-3 text-uppercase small fw-medium mb-2 text-secondary sidebar-text">User Management</p>
+
+                    <a href=""
+                        class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded-2 {{ request()->routeIs('admin.users.*') ? 'active-nav' : 'text-secondary hover-nav' }}">
+                        <i class="bi bi-people-fill"></i>
+                        <span class="sidebar-text">Users</span>
+                    </a>
+                </div>
             </div>
         </nav>
+
+        <!-- User Profile -->
+        <div class="border-top p-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="rounded-circle bg-success d-flex align-items-center justify-content-center"
+                    style="width: 40px; height: 40px;">
+                    <span class="text-white fw-medium">JD</span>
+                </div>
+                <div class="flex-grow-1 sidebar-text">
+                    <h6 class="mb-0 text-dark fw-medium">John Doe</h6>
+                    <small class="text-muted">Super Admin</small>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-link text-secondary p-0" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill me-2"></i>Profile</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear-fill me-2"></i>Settings</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="#"><i
+                                    class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </aside>
+
+<style>
+    /* Sidebar Styles */
+    .sidebar {
+        transition: all 0.3s ease;
+        height: 100vh !important;
+        overflow-y: auto;
+    }
+
+    .hover-nav {
+        transition: all 0.3s ease;
+    }
+
+    .hover-nav:hover {
+        background-color: #f8f9fa;
+        color: #198754 !important;
+    }
+
+    .active-nav {
+        background-color: #e9f7ef !important;
+        color: #198754 !important;
+        font-weight: 500;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 991.98px) {
+        .sidebar {
+            transform: translateX(-100%);
+        }
+
+        .sidebar.show {
+            transform: translateX(0);
+        }
+    }
+
+    /* Collapsed Sidebar Styles */
+    @media (min-width: 992px) {
+        .sidebar.collapsed {
+            width: 4.5rem !important;
+        }
+
+        .sidebar.collapsed .sidebar-text {
+            display: none;
+        }
+
+        .sidebar.collapsed .nav-link {
+            justify-content: center;
+            padding: 0.5rem !important;
+        }
+
+        .sidebar.collapsed .dropdown {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const contentWrapper = document.getElementById('contentWrapper');
+
+        // Handle mobile toggle
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('show');
+            });
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth < 992) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickOnToggle = sidebarToggle && sidebarToggle.contains(event.target);
+
+                if (!isClickInsideSidebar && !isClickOnToggle) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 992) {
+                sidebar.classList.remove('show');
+            }
+        });
+
+        // Add desktop toggle functionality with keyboard shortcut
+        document.addEventListener('keydown', function(event) {
+            // Ctrl + B to toggle sidebar
+            if (event.ctrlKey && event.key === 'b') {
+                event.preventDefault();
+                if (window.innerWidth >= 992) {
+                    sidebar.classList.toggle('collapsed');
+                    contentWrapper.classList.toggle('sidebar-collapsed');
+                }
+            }
+        });
+    });
+</script>

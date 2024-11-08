@@ -52,7 +52,7 @@
 
             <p class="mt-8 text-center text-secondary">
                 Already have an account?
-                <a href="{{ url('login') }}" class="text-accent font-medium hover:text-emerald-700">Sign in</a>
+                <a href="{{ route('login') }}" class="text-accent font-medium hover:text-emerald-700">Sign in</a>
             </p>
         </div>
     </div>

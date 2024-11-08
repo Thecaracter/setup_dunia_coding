@@ -41,7 +41,7 @@
 
             <p class="mt-8 text-center text-secondary">
                 Don't have an account?
-                <a href="{{ url('register') }}" class="text-accent font-medium hover:text-emerald-700">Create Account</a>
+                <a href="{{ route('register') }}" class="text-accent font-medium hover:text-emerald-700">Create Account</a>
             </p>
         </div>
     </div>
