@@ -20,6 +20,7 @@ class Order extends Model
         'midtrans_transaction_id',
         'midtrans_payment_type',
         'snap_token',
+        'resi_code',
     ];
 
     protected $casts = [

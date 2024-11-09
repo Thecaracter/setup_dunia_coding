@@ -25,8 +25,7 @@ class Product extends Model
     protected $casts = [
         'price' => 'decimal:2',
         'is_active' => 'boolean',
-        'image' => 'array',
-        'stock' => 'integer'  // Menambahkan cast stock sebagai integer untuk trait
+        'stock' => 'integer'
     ];
 
     /**

@@ -27,6 +27,7 @@ return new class extends Migration {
             $table->string('midtrans_transaction_id')->nullable();
             $table->string('midtrans_payment_type')->nullable();
             $table->string('snap_token')->nullable();
+            $table->string('resi_code')->nullable();
             $table->timestamps();
 
             $table->index('status');
