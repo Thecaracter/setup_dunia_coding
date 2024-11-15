@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Exception;
@@ -7,8 +6,8 @@ use Illuminate\Support\Facades\DB;
 
 trait HasOrderStatus
 {
-    /**
-     * Status yang valid untuk order
+    /**      
+     * Status yang valid untuk order      
      */
     public static array $validStatuses = [
         'pending',
@@ -19,11 +18,11 @@ trait HasOrderStatus
         'cancelled'
     ];
 
-    /**
-     * Update status order
-     * 
-     * @param string $status
-     * @throws Exception
+    /**      
+     * Update status order      
+     *       
+     * @param string $status      
+     * @throws Exception      
      */
     public function updateStatus(string $status): void
     {
@@ -31,7 +30,6 @@ trait HasOrderStatus
             throw new Exception("Invalid order status: {$status}");
         }
 
-        // Validasi transisi status
         $this->validateStatusTransition($status);
 
         DB::transaction(function () use ($status) {
@@ -39,32 +37,28 @@ trait HasOrderStatus
             $this->status = $status;
             $this->save();
 
-            // Jika order dibatalkan, kembalikan stok
             if ($status === 'cancelled' && $oldStatus !== 'cancelled') {
                 $this->restoreProductStock();
             }
         });
     }
 
-    /**
-     * Validasi transisi status
-     * 
-     * @param string $newStatus
-     * @throws Exception
+    /**      
+     * Validasi transisi status      
+     *       
+     * @param string $newStatus      
+     * @throws Exception      
      */
     private function validateStatusTransition(string $newStatus): void
     {
-        // Order yang sudah dibatalkan tidak bisa diubah statusnya
         if ($this->status === 'cancelled') {
             throw new Exception("Cannot change status of cancelled order");
         }
 
-        // Order yang sudah selesai hanya bisa dibatalkan
         if ($this->status === 'delivered' && $newStatus !== 'cancelled') {
             throw new Exception("Delivered order can only be cancelled");
         }
 
-        // Validasi urutan status
         $statusOrder = array_flip(['pending', 'paid', 'processing', 'shipped', 'delivered']);
         if (isset($statusOrder[$this->status], $statusOrder[$newStatus])) {
             if ($statusOrder[$newStatus] < $statusOrder[$this->status]) {
@@ -73,8 +67,8 @@ trait HasOrderStatus
         }
     }
 
-    /**
-     * Kembalikan stok produk saat order dibatalkan
+    /**      
+     * Kembalikan stok produk saat order dibatalkan      
      */
     private function restoreProductStock(): void
     {
@@ -83,36 +77,8 @@ trait HasOrderStatus
         }
     }
 
-    /**
-     * Helper methods untuk update status
-     */
-    public function markAsPaid(): void
-    {
-        $this->updateStatus('paid');
-    }
-
-    public function markAsProcessing(): void
-    {
-        $this->updateStatus('processing');
-    }
-
-    public function markAsShipped(): void
-    {
-        $this->updateStatus('shipped');
-    }
-
-    public function markAsDelivered(): void
-    {
-        $this->updateStatus('delivered');
-    }
-
-    public function cancel(): void
-    {
-        $this->updateStatus('cancelled');
-    }
-
-    /**
-     * Helper methods untuk cek status
+    /**      
+     * Helper methods untuk cek status      
      */
     public function isPending(): bool
     {
@@ -142,5 +108,21 @@ trait HasOrderStatus
     public function isCancelled(): bool
     {
         return $this->status === 'cancelled';
+    }
+
+    /**
+     * Get color for status badge
+     */
+    public function getStatusColorAttribute(): string
+    {
+        return match ($this->status) {
+            'pending' => 'warning',
+            'paid' => 'info',
+            'processing' => 'primary',
+            'shipped' => 'secondary',
+            'delivered' => 'success',
+            'cancelled' => 'danger',
+            default => 'light',
+        };
     }
 }

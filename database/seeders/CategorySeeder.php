@@ -16,24 +16,44 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'name' => 'Smartphones',
-                'description' => 'Latest smartphones from various brands',
+                'description' => 'Latest smartphones from various brands including iPhone, Samsung, and more',
             ],
             [
                 'name' => 'Laptops',
-                'description' => 'Professional and gaming laptops',
+                'description' => 'Professional and gaming laptops from top manufacturers',
+            ],
+            [
+                'name' => 'Computer Parts',
+                'description' => 'PC components including CPU, GPU, RAM, and storage devices',
+            ],
+            [
+                'name' => 'Audio Equipment',
+                'description' => 'High-quality headphones, earbuds, speakers, and audio accessories',
+            ],
+            [
+                'name' => 'Gaming Gear',
+                'description' => 'Gaming consoles, controllers, and gaming accessories',
+            ],
+            [
+                'name' => 'Cameras',
+                'description' => 'Digital cameras, lenses, and photography accessories',
+            ],
+            [
+                'name' => 'Smart Home',
+                'description' => 'Smart home devices, automation systems, and IoT gadgets',
+            ],
+            [
+                'name' => 'Wearables',
+                'description' => 'Smartwatches, fitness trackers, and wearable technology',
+            ],
+            [
+                'name' => 'Networking',
+                'description' => 'Routers, switches, network cards, and connectivity solutions',
             ],
             [
                 'name' => 'Accessories',
-                'description' => 'Phone and laptop accessories',
-            ],
-            [
-                'name' => 'Audio',
-                'description' => 'Headphones, earbuds, and speakers',
-            ],
-            [
-                'name' => 'Gaming',
-                'description' => 'Gaming consoles and accessories',
-            ],
+                'description' => 'Various accessories for electronic devices and gadgets',
+            ]
         ];
 
         foreach ($categories as $category) {
